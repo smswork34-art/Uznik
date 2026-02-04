@@ -452,6 +452,40 @@
             letter-spacing: 1px;
         }
         
+        /* Баннер изображение */
+        .image-banner {
+            background: var(--card-bg);
+            border-radius: var(--border-radius-lg);
+            padding: 16px;
+            margin-bottom: 28px;
+            border: 1px solid var(--glass-border);
+            position: relative;
+            overflow: hidden;
+            transform: translateZ(0);
+            transition: var(--transition-super-smooth);
+            backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .image-banner:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 107, 0, 0.3);
+            box-shadow: 
+                0 0 30px rgba(255, 107, 0, 0.2),
+                0 20px 50px rgba(0, 0, 0, 0.6);
+        }
+        
+        .banner-image {
+            width: 100%;
+            border-radius: var(--border-radius-md);
+            display: block;
+            transition: var(--transition-smooth);
+        }
+        
+        .image-banner:hover .banner-image {
+            transform: scale(1.02);
+        }
+        
         /* Карточки */
         .quantum-grid {
             display: flex;
@@ -806,6 +840,11 @@
                 <div class="status-text">СИСТЕМА АКТИВНА • СТАТУС: ОПЕРАТИВНЫЙ</div>
             </div>
             
+            <!-- Баннер изображение -->
+            <div class="image-banner">
+                <img src="banner.png" alt="Рекламный баннер" class="banner-image">
+            </div>
+            
             <!-- Карточки -->
             <div class="quantum-grid">
                 <!-- Поддержка -->
@@ -826,8 +865,8 @@
                         </svg>
                     </div>
                     <div class="card-content">
-                        <div class="card-title">ПОДДЕРЖКА</div>
-                        <div class="card-description">Техническая поддержка и помощь 24/7</div>
+                        <div class="card-title">АДМИН UZNIK</div>
+                        <div class="card-description">Предоставление услуг продажи 24/7</div>
                     </div>
                     <div class="card-quantum">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
@@ -855,8 +894,8 @@
                         </svg>
                     </div>
                     <div class="card-content">
-                        <div class="card-title">ПРИЕМКА</div>
-                        <div class="card-description">Оформление и прием материалов</div>
+                        <div class="card-title">ПРИЕМКА БАНКОВ</div>
+                        <div class="card-description">Покупка банков по высшим ценам, быстрый вбив, хорошие условия покупки</div>
                     </div>
                     <div class="card-quantum">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
@@ -884,8 +923,8 @@
                         </svg>
                     </div>
                     <div class="card-content">
-                        <div class="card-title">ЧАТ УСЛУГ</div>
-                        <div class="card-description">Обсуждение услуг и заказов</div>
+                        <div class="card-title">ЧАТ УСЛУГ ORION</div>
+                        <div class="card-description">Услуги, продажа/покупка цифровых ценностей, гарант-сервис</div>
                     </div>
                     <div class="card-quantum">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
@@ -914,8 +953,8 @@
                         </svg>
                     </div>
                     <div class="card-content">
-                        <div class="card-title">НОВОСТИ</div>
-                        <div class="card-description">Последние обновления и анонсы</div>
+                        <div class="card-title">ПЕРЕХОДНИК</div>
+                        <div class="card-description">Актуальные новости о проектах каждый день</div>
                     </div>
                     <div class="card-quantum">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
@@ -1105,6 +1144,7 @@
         function animateMenuElements() {
             const banner = document.querySelector('.hologram-banner');
             const status = document.querySelector('.quantum-status');
+            const imageBanner = document.querySelector('.image-banner');
             const cards = document.querySelectorAll('.quantum-card');
             const neonBanner = document.querySelector('.neon-banner');
             
@@ -1129,6 +1169,18 @@
                 setTimeout(() => {
                     status.style.opacity = '1';
                     status.style.transform = 'translateY(0)';
+                }, 50);
+            }
+            
+            // Баннер изображение
+            if (imageBanner) {
+                imageBanner.style.opacity = '0';
+                imageBanner.style.transform = 'translateY(20px)';
+                imageBanner.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.35s';
+                
+                setTimeout(() => {
+                    imageBanner.style.opacity = '1';
+                    imageBanner.style.transform = 'translateY(0)';
                 }, 50);
             }
             
